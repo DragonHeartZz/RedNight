@@ -38,6 +38,7 @@ public class BouncingBall extends JFrame {
 	int rightPaddleY;
 	int rightPaddleHeight = 100;
 	//Mouse
+	int coun1=0, coun2=0;
 	int mouseX = 0, mouseY =0;
 	
 	/**
@@ -70,6 +71,12 @@ public class BouncingBall extends JFrame {
 				y += ySpeed;
 				//Reverse the direction of the ball if it hits the left or right wall
 				if (x < 0 || x > WIDTH - size) {
+					if(x<0){
+					coun1++;
+					}
+					if(x>WIDTH - size){
+					coun2++;
+					}
 					xSpeed = -xSpeed;
 					changeBallColor();
 				}
@@ -133,6 +140,8 @@ public class BouncingBall extends JFrame {
 			g.fillRect(rightPaddleX, rightPaddleY, paddleWidth, rightPaddleHeight);
 			
 			//Debug
+			g.drawString("" +coun1,30,30);
+			g.drawString("" +coun2,300,30);
 			long duration = System.nanoTime() - start;
 			//System.out.println("Paint in : "+ duration+ " nano seconds");
 		}
